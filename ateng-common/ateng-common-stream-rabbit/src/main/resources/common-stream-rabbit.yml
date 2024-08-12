@@ -1,0 +1,41 @@
+---
+# Spring Cloud Stream配置文件
+# RabbitMQ参考：https://devpress.csdn.net/cloud-native/65dc0ab66901917cd68b8aa7.html?dp_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTM3NjU4MywiZXhwIjoxNzE4MjU5NTUwLCJpYXQiOjE3MTc2NTQ3NTAsInVzZXJuYW1lIjoiTElOR08yMDE5In0.YvEePZxH7pR37idjs6gtR61x4MZo0gxUoMINLCDh_Mk
+
+# 配置 Spring Cloud Stream
+# bindings的命名遵循以下规范
+# Function Names：绑定名称基于函数名称。
+# Input和Output通道：格式为<function-name>-in-<index>和<function-name>-out-<index>。
+# 索引：当函数有多个输入或输出时，使用索引（从0开始）区分。
+spring:
+  rabbitmq:
+    # # 客户端应该连接的地址的逗号分隔列表。设置后，host和port将被忽略
+    addresses: 192.168.1.10:24572
+    #host: 192.168.1.10
+    #port: 24572
+    username: admin
+    password: Admin@123
+  cloud:
+    stream:
+      default:
+        group: LX_ateng_Cloud
+        content-type: application/json
+      bindings:
+        person-in-0:
+          binder: rabbit
+          destination: cloud-stream-person
+        person-out-0:
+          binder: rabbit
+          destination: cloud-stream-person
+        string-in-0:
+          binder: rabbit
+          destination: cloud-stream-string
+          #content-type: application/json
+          #group: LX_ateng_Cloud
+        string-out-0:
+          binder: rabbit
+          destination: cloud-stream-string
+          #content-type: application/json
+    function:
+      definition: person;string
+---

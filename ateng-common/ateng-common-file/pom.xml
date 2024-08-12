@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块 -->
+    <parent>
+        <groupId>io.github.kongyu666</groupId>
+        <artifactId>ateng-common</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 项目坐标 -->
+    <artifactId>ateng-common-file</artifactId>
+    <description>
+        ateng-common-file 通用模块-文件模块，X File Storage: 文件存储框架
+    </description>
+
+    <!-- 服务依赖 -->
+    <dependencies>
+        <!--ateng-common-core 通用模块-核心模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- X File Storage: 将文件存储各个存储平台 -->
+        <dependency>
+            <groupId>org.dromara.x-file-storage</groupId>
+            <artifactId>x-file-storage-spring</artifactId>
+            <version>${file-storage.version}</version>
+        </dependency>
+        <!-- MinIO 对象存储 -->
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>${minio.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块 -->
+    <parent>
+        <groupId>io.github.kongyu666</groupId>
+        <artifactId>ateng-common</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 项目坐标 -->
+    <artifactId>ateng-common-jetcache</artifactId>
+    <description>
+        ateng-common-jetcache 通用模块-缓存模块，Java缓存框架
+    </description>
+
+    <!-- 服务依赖 -->
+    <dependencies>
+        <!--ateng-common-core 通用模块-核心模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- JetCache Java缓存框架 -->
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-starter-redis</artifactId>
+            <version>${jetcache.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-starter-redis-lettuce</artifactId>
+            <version>${jetcache.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

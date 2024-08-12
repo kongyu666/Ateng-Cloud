@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块 -->
+    <parent>
+        <groupId>io.github.kongyu666</groupId>
+        <artifactId>ateng-common</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 项目坐标 -->
+    <artifactId>ateng-common-redis</artifactId>
+    <description>
+        ateng-common-redis 通用模块-Redis缓存模块，使用Fastjson2集成RedisTemplate
+    </description>
+
+    <!-- 服务依赖 -->
+    <dependencies>
+        <!--ateng-common-core 通用模块-核心模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!-- 高性能的JSON库 -->
+        <!-- https://github.com/alibaba/fastjson2/wiki/fastjson2_intro_cn#0-fastjson-20%E4%BB%8B%E7%BB%8D -->
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>${fastjson2.version}</version>
+        </dependency>
+        <!-- 在 Spring 中集成 Fastjson2 -->
+        <!-- https://github.com/alibaba/fastjson2/blob/main/docs/spring_support_cn.md -->
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2-extension-spring6</artifactId>
+            <version>${fastjson2.version}</version>
+        </dependency>
+
+        <!--用于redis数据库连接-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--用于redis lettuce 连接池pool使用-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>

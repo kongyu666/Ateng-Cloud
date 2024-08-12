@@ -1,0 +1,17 @@
+---
+# Open Feign
+#feign:
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 5000
+#        readTimeout: 5000
+#        loggerLevel: basic
+feign:
+  # 这样就设置好了 feign 请求方式是 httpclient，而不是 UrlConnetcion
+  httpclient:
+    enable: true
+    # feign的最大连接数
+    max-connection: 200
+    # feign 单个路径的最大连接数
+    max-connections-per-route: 50

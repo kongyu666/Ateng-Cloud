@@ -1,0 +1,11 @@
+---
+spring:
+  mail:
+    # 配置 SMTP 服务器地址
+    host: smtp.qq.com
+    # 发送者邮箱，已开通POP3/SMTP服务的邮箱，也就是你自己的
+    username: 2385569970@qq.com
+    # 配置密码，注意不是真正的密码，而是刚刚申请到的授权码
+    password: rieqetncwwurdjji
+    # SMTP 服务器的端口
+    port: 587

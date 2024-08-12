@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块 -->
+    <parent>
+        <groupId>io.github.kongyu666</groupId>
+        <artifactId>ateng-common</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 项目坐标 -->
+    <artifactId>ateng-common-stream-kafka</artifactId>
+    <description>
+        ateng-common-stream-kafka 通用模块-Kafka消息模块
+        Spring Cloud Stream是一个框架，用于构建与共享消息传递系统相连的高度可伸缩的事件驱动微服务。
+    </description>
+
+    <!-- 服务依赖 -->
+    <dependencies>
+        <!--ateng-common-core 通用模块-核心模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Spring Cloud Stream Kafka 启动器依赖，用于集成 Kafka 消息中间件 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-kafka</artifactId>
+        </dependency>
+
+        <!-- Spring Cloud Stream RabbitMQ 启动器依赖，用于集成 RabbitMQ 消息中间件 -->
+        <!--<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+        </dependency>-->
+
+    </dependencies>
+
+</project>

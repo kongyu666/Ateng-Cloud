@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ateng-auth
+  namespace: ateng
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ateng-auth
+  template:
+    metadata:
+      labels:
+        app: ateng-auth
+    spec:
+      hostname: ateng-auth
+      terminationGracePeriodSeconds: 30
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: ateng-boot
+                topologyKey: kubernetes.io/hostname
+              weight: 1
+      containers:
+        - name: ateng-auth
+          image: registry.lingo.local/ateng/ateng-auth:latest
+          imagePullPolicy: Always
+          #resources:
+          #  limits:
+          #    cpu: '2'
+          #    memory: 2Gi
+          #  requests:
+          #    cpu: 500m
+          #    memory: 512Mi
+          ports:
+            - name: tcp-20521
+              protocol: TCP
+              containerPort: 20521
+          env:
+            - name: JAVA_OPTS
+              value: "-Xms128m -Xmx2048m"
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /actuator/health
+              port: 20521
+            initialDelaySeconds: 20
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /actuator/health
+              port: 20521
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          lifecycle:
+            preStop:
+              exec:
+                command: [ "/bin/sh", "-c", "curl -u admin:Admin@123 -X POST http://localhost:20521/actuator/shutdown && sleep 25" ]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ateng-auth
+  namespace: ateng
+  labels:
+    app: ateng-auth
+spec:
+  type: ClusterIP
+  selector:
+    app: ateng-auth
+  ports:
+    - port: 20521
+      targetPort: 20521
+---

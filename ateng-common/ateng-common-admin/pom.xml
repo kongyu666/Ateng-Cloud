@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块 -->
+    <parent>
+        <groupId>io.github.kongyu666</groupId>
+        <artifactId>ateng-common</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 项目坐标 -->
+    <artifactId>ateng-common-admin</artifactId>
+    <description>
+        ateng-common-admin 通用模块-监控模块，注册到 Spring Boot Admin 服务中，从而实现应用程序的监控和管理
+    </description>
+
+    <!-- 服务依赖 -->
+    <dependencies>
+        <!--ateng-common-core 通用模块-核心模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Spring Boot Admin 监控工具 -->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块 -->
+    <parent>
+        <groupId>io.github.kongyu666</groupId>
+        <artifactId>ateng-common</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 项目坐标 -->
+    <artifactId>ateng-common-seata</artifactId>
+    <description>
+        ateng-common-seata 通用模块-分布式事务模块
+        Seata 是一款开源的分布式事务解决方案，致力于提供高性能和简单易用的分布式事务服务。
+    </description>
+
+    <!-- 服务依赖 -->
+    <dependencies>
+        <!--ateng-common-core 通用模块-核心模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Apache Dubbo Seata 过滤器依赖，用于将 Seata 集成到 Dubbo 中 -->
+        <dependency>
+            <groupId>org.apache.dubbo.extensions</groupId>
+            <artifactId>dubbo-filter-seata</artifactId>
+            <version>3.2.0</version>
+            <exclusions>
+                <exclusion>
+                    <!-- 排除 Seata 核心库依赖 -->
+                    <groupId>io.seata</groupId>
+                    <artifactId>seata-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Spring Cloud Alibaba Seata 启动器依赖，用于集成分布式事务管理 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+            <exclusions>
+                <exclusion>
+                    <!-- 排除所有 Log4j 依赖 -->
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <!-- 排除 Dubbo Seata 过滤器依赖，避免冲突 -->
+                    <groupId>org.apache.dubbo.extensions</groupId>
+                    <artifactId>dubbo-filter-seata</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+    </dependencies>
+
+</project>

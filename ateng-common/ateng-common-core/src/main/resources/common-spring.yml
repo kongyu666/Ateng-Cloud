@@ -1,0 +1,14 @@
+---
+# SpringBoot3和JDK21 开启虚拟线程
+spring:
+  threads:
+    virtual:
+      enabled: true
+---
+# 配置文件上传大小限制
+spring:
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+---

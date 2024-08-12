@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块 -->
+    <parent>
+        <groupId>io.github.kongyu666</groupId>
+        <artifactId>ateng-common</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 项目坐标 -->
+    <artifactId>ateng-common-snail-job</artifactId>
+    <description>
+        ateng-common-snail-job 通用模块-任务调度模块，Snail Job: 分布式任务重试和分布式任务调度平台
+    </description>
+
+    <!-- 服务依赖 -->
+    <dependencies>
+        <!--ateng-common-core 通用模块-核心模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!--Snail Job：灵活，可靠和快速的分布式任务重试和分布式任务调度平台-->
+        <dependency>
+            <groupId>com.aizuda</groupId>
+            <artifactId>snail-job-client-starter</artifactId>
+            <version>${snail-job.version}</version>
+        </dependency>
+        <!--重试模块-->
+        <dependency>
+            <groupId>com.aizuda</groupId>
+            <artifactId>snail-job-client-retry-core</artifactId>
+            <version>${snail-job.version}</version>
+        </dependency>
+        <!--定时任务-->
+        <dependency>
+            <groupId>com.aizuda</groupId>
+            <artifactId>snail-job-client-job-core</artifactId>
+            <version>${snail-job.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

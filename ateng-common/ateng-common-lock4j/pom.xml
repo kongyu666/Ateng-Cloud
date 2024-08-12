@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块 -->
+    <parent>
+        <groupId>io.github.kongyu666</groupId>
+        <artifactId>ateng-common</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 项目坐标 -->
+    <artifactId>ateng-common-lock4j</artifactId>
+    <description>
+        ateng-common-lock4j 通用模块-分布式锁模块，
+        基于Spring AOP 的声明式和编程式分布式锁，支持RedisTemplate、Redisson、Zookeeper
+    </description>
+
+    <!-- 服务依赖 -->
+    <dependencies>
+        <!--ateng-common-core 通用模块-核心模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!--ateng-common-redis 通用模块-缓存模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-redis</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- lock4j: 分布式锁组件 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>lock4j-redis-template-spring-boot-starter</artifactId>
+            <version>${lock4j.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

@@ -1,0 +1,38 @@
+---
+# 配置 Spring Cloud Stream
+# bindings的命名遵循以下规范
+# Function Names：绑定名称基于函数名称。
+# Input和Output通道：格式为<function-name>-in-<index>和<function-name>-out-<index>。
+# 索引：当函数有多个输入或输出时，使用索引（从0开始）区分。
+spring:
+  cloud:
+    stream:
+      kafka:
+        default:
+          # https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/spring-cloud-stream-binder-kafka.html#_kafka_streams_consumer_properties
+          consumer:
+            startOffset: earliest # earliest or latest
+        binder:
+          brokers: 192.168.1.10:9094
+          # configuration: k:v
+      default:
+        group: LX_ateng_Cloud
+        content-type: application/json
+      defaultBinder: kafka
+      bindings:
+        person-in-0:
+          destination: cloud-stream-person
+        person-out-0:
+          destination: cloud-stream-person
+        string-in-0:
+          destination: cloud-stream-string
+          #content-type: application/json
+          #binder: kafka
+          #group: LX_ateng_Cloud
+        string-out-0:
+          destination: cloud-stream-string
+          #content-type: application/json
+          #binder: kafka
+    function:
+      definition: person;string
+---

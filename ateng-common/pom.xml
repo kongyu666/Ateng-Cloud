@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块 -->
+    <parent>
+        <groupId>io.github.kongyu666</groupId>
+        <artifactId>ateng-cloud</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 项目坐标 -->
+    <artifactId>ateng-common</artifactId>
+    <description>
+        ateng-common 通用模块
+    </description>
+
+    <!-- 打包方式为 POM，表示该项目为聚合项目 -->
+    <packaging>pom</packaging>
+    <!-- 项目包含的子模块 -->
+    <modules>
+        <module>ateng-common-core</module>
+        <module>ateng-common-redis</module>
+        <module>ateng-common-web</module>
+        <module>ateng-common-satoken</module>
+        <module>ateng-common-mybatis-flex</module>
+        <module>ateng-common-websocket</module>
+        <module>ateng-common-forest</module>
+        <module>ateng-common-file</module>
+        <module>ateng-common-easy-excel</module>
+        <module>ateng-common-snail-job</module>
+        <module>ateng-common-dobbo</module>
+        <module>ateng-common-openfeign</module>
+        <module>ateng-common-admin</module>
+        <module>ateng-common-aop-log</module>
+        <module>ateng-common-stream-kafka</module>
+        <module>ateng-common-stream-rabbit</module>
+        <module>ateng-common-seata</module>
+        <module>ateng-common-idempotent</module>
+        <module>ateng-common-lock4j</module>
+        <module>ateng-common-sentinel</module>
+        <module>ateng-common-sms4j</module>
+        <module>ateng-common-mail</module>
+        <module>ateng-common-jetcache</module>
+    </modules>
+
+</project>

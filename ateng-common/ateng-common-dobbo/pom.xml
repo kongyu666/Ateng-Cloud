@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块 -->
+    <parent>
+        <groupId>io.github.kongyu666</groupId>
+        <artifactId>ateng-common</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 项目坐标 -->
+    <artifactId>ateng-common-dobbo</artifactId>
+    <description>
+        ateng-common-dobbo 通用模块-Web和RPC远程调用模块
+        Apache Dubbo 是一款易用、高性能的 WEB 和 RPC 框架，同时为构建企业级微服务提供服务发现、流量治理、可观测、认证鉴权等能力、工具与最佳实践。
+    </description>
+
+    <!-- 服务依赖 -->
+    <dependencies>
+        <!--ateng-common-core 通用模块-核心模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!--ateng-common-redis 通用模块-缓存模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-redis</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!--ateng-common-satoken 通用模块-Sa-Token权限认证模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-satoken</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Apache Dubbo Spring Boot 启动器依赖，用于将 Dubbo 集成到 Spring Boot 项目中 -->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>${dubbo.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Apache Dubbo Spring Boot Actuator 依赖，用于提供 Dubbo 的健康检查和指标监控功能 -->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-actuator</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
+
+        <!-- Sa-Token 整合 Dubbo -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-dubbo</artifactId>
+            <version>${sa-token.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

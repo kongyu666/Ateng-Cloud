@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块 -->
+    <parent>
+        <groupId>io.github.kongyu666</groupId>
+        <artifactId>ateng-cloud</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <!-- 项目坐标 -->
+    <artifactId>ateng-api</artifactId>
+    <description>
+        ateng-api RPC远程调用模块，使用Dobbo完成微服务之间的通信
+    </description>
+
+    <!-- 服务依赖 -->
+    <dependencies>
+
+        <!--ateng-common-web 通用模块-Web模块，使用Fastjson2集成Web MVC-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-web</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!--ateng-common-dobbo 通用模块-Web和RPC远程调用模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-dobbo</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+    </dependencies>
+</project>
