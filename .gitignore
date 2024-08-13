@@ -27,6 +27,7 @@
 !*.java
 !*.xml
 !*.config
+!*.imports
 !*.sql
 !banner.txt
 

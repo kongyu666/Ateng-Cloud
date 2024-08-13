@@ -1,0 +1,2 @@
+#SnailJob自动装配了后使用@SpringBootTest会报common-snail-job.yml找不到
+#config.snailjob.io.github.kongyu666.common.SnailJobConfig
