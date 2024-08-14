@@ -9,6 +9,11 @@ server:
 spring:
   cloud:
     gateway:
+      requestLog: true
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
       routes:
         - id: ateng-auth
           uri: lb://ateng-auth
@@ -34,6 +39,30 @@ spring:
                 redis-rate-limiter.replenishRate: 100
                 redis-rate-limiter.burstCapacity: 200
                 key-resolver: '#{@ipKeyResolver}'
+---
+# 安全配置
+security:
+  # 防止XSS攻击
+  xss:
+    enabled: true
+    excludeUrls:
+      - /system/notice
+      - /workflow/model/save
+      - /workflow/model/editModelXml
+  # 不校验白名单
+  ignore:
+    whites:
+      - /auth/code
+      - /auth/logout
+      - /auth/login
+      - /auth/binding/*
+      - /auth/social/callback
+      - /auth/register
+      - /auth/tenant/list
+      - /resource/sms/code
+      - /*/v3/api-docs
+      - /*/error
+      - /csrf
 ---
 # redis 配置
 spring:

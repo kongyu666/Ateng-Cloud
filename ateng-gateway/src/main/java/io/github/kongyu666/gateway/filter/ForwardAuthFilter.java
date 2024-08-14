@@ -1,17 +1,15 @@
 package io.github.kongyu666.gateway.filter;
 
+import cn.dev33.satoken.SaManager;
 import cn.dev33.satoken.same.SaSameUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-
-import java.net.InetSocketAddress;
 
 /**
  * 全局过滤器，为请求添加 Same-Token
@@ -24,12 +22,10 @@ import java.net.InetSocketAddress;
 public class ForwardAuthFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        ServerHttpRequest request = exchange.getRequest();
-        HttpMethod method = request.getMethod();
-        String uri = request.getPath().pathWithinApplication().value();
-        InetSocketAddress remoteAddress = request.getRemoteAddress();
-        String clientIp = (remoteAddress != null) ? remoteAddress.getAddress().getHostAddress() : "Unknown";
-        log.info("访问接口 ==> method={}, uri={}, clientIp={}", method, uri, clientIp);
+        // 未开启配置则直接跳过
+        if (!SaManager.getConfig().getCheckSameToken()) {
+            return chain.filter(exchange);
+        }
         ServerHttpRequest newRequest = exchange
                 .getRequest()
                 .mutate()
@@ -42,8 +38,7 @@ public class ForwardAuthFilter implements GlobalFilter, Ordered {
 
     @Override
     public int getOrder() {
-        // 数值越小，越先执行
-        return Integer.MIN_VALUE;
+        return -100;
     }
 
 }
