@@ -1,9 +1,7 @@
 package io.github.kongyu666.gateway.filter;
 
 import cn.hutool.core.map.MapUtil;
-import cn.hutool.core.util.ObjectUtil;
 import io.github.kongyu666.common.core.utils.JsonUtils;
-import io.github.kongyu666.gateway.config.properties.ApiDecryptProperties;
 import io.github.kongyu666.gateway.config.properties.CustomGatewayProperties;
 import io.github.kongyu666.gateway.utils.WebFluxUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -31,8 +29,6 @@ public class GlobalLogFilter implements GlobalFilter, Ordered {
     private static final String START_TIME = "startTime";
     @Autowired
     private CustomGatewayProperties customGatewayProperties;
-    @Autowired
-    private ApiDecryptProperties apiDecryptProperties;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -45,13 +41,8 @@ public class GlobalLogFilter implements GlobalFilter, Ordered {
 
         // 打印请求参数
         if (WebFluxUtils.isJsonRequest(exchange)) {
-            if (apiDecryptProperties.getEnabled()
-                    && ObjectUtil.isNotNull(request.getHeaders().getFirst(apiDecryptProperties.getHeaderFlag()))) {
-                log.info("[Ateng]开始请求 => URL[{}],参数类型[encrypt]", url);
-            } else {
-                String jsonParam = WebFluxUtils.resolveBodyFromCacheRequest(exchange);
-                log.info("[Ateng]开始请求 => URL[{}],参数类型[json],参数:[{}]", url, jsonParam);
-            }
+            String jsonParam = WebFluxUtils.resolveBodyFromCacheRequest(exchange);
+            log.info("[Ateng]开始请求 => URL[{}],参数类型[json],参数:[{}]", url, jsonParam);
         } else {
             MultiValueMap<String, String> parameterMap = request.getQueryParams();
             if (MapUtil.isNotEmpty(parameterMap)) {
