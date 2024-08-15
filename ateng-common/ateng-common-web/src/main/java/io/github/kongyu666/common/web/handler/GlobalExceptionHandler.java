@@ -110,7 +110,7 @@ public class GlobalExceptionHandler {
         if (ex instanceof HttpRequestMethodNotSupportedException) {
             message = "请求方式错误";
         } else if (ex instanceof NoHandlerFoundException || ex instanceof NoResourceFoundException || ex instanceof HttpMessageNotReadableException) {
-            message = "资源未找到";
+            message = "资源不存在";
         } else if (ex instanceof MissingServletRequestParameterException) {
             message = "请求参数缺失";
         } else if (ex instanceof IllegalArgumentException) {

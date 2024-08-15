@@ -35,7 +35,10 @@ public class GatewayExceptionHandler implements ErrorWebExceptionHandler {
         String msg;
         String code = "-1";
 
-        if (ex instanceof NotFoundException || ex instanceof NoResourceFoundException) {
+        if (ex instanceof NotFoundException) {
+            msg = AppCodeEnum.SERVICE_UNAVAILABLE.getDescription();
+            code = AppCodeEnum.SERVICE_UNAVAILABLE.getCode();
+        } else if (ex instanceof NoResourceFoundException) {
             msg = AppCodeEnum.RESOURCE_NOT_FOUND.getDescription();
             code = AppCodeEnum.RESOURCE_NOT_FOUND.getCode();
         } else if (ex instanceof ResponseStatusException responseStatusException) {
