@@ -3,6 +3,7 @@ package io.github.kongyu666.gateway.utils;
 import cn.hutool.core.util.ObjectUtil;
 import io.github.kongyu666.common.core.domain.R;
 import io.github.kongyu666.common.core.utils.JsonUtils;
+import io.github.kongyu666.common.core.utils.Result;
 import io.github.kongyu666.common.core.utils.StringUtils;
 import io.github.kongyu666.gateway.filter.GlobalCacheRequestFilter;
 import org.springframework.cloud.gateway.support.ServerWebExchangeUtils;
@@ -142,7 +143,7 @@ public class WebFluxUtils {
     public static Mono<Void> webFluxResponseWriter(ServerHttpResponse response, String contentType, HttpStatus status, Object value, String code) {
         response.setStatusCode(status);
         response.getHeaders().add(HttpHeaders.CONTENT_TYPE, contentType);
-        R<?> result = R.fail(code, value.toString());
+        Result result = Result.error(code, value.toString());
         DataBuffer dataBuffer = response.bufferFactory().wrap(JsonUtils.toJsonString(result).getBytes());
         return response.writeWith(Mono.just(dataBuffer));
     }
