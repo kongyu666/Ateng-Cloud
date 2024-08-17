@@ -7,4 +7,4 @@
       ╚══════╝  ╚═╝  ╚═╝  ╚═══╝   ╚═════╝    ╚═════╝
 ${AnsiColor.CYAN}        Application Name:${AnsiColor.BLACK} ${AnsiColor.BRIGHT_GREEN}${spring.application.name:阿腾} ${AnsiColor.BLACK}
 ${AnsiColor.CYAN}        SpringBoot Version:${AnsiColor.BLACK} ${AnsiColor.BRIGHT_GREEN}${spring-boot.version} ${AnsiColor.BLACK}
-${AnsiColor.CYAN}        Profiles Active:${AnsiColor.BLACK} ${AnsiColor.BRIGHT_GREEN}${spring.profiles.activeDesc:null} ${AnsiColor.BLACK}
+${AnsiColor.CYAN}        Profiles Active:${AnsiColor.BLACK} ${AnsiColor.BRIGHT_GREEN}${spring.profiles.desc:null} ${AnsiColor.BLACK}

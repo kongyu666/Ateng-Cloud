@@ -1,7 +1,7 @@
 # nacos 配置
 spring:
   application:
-    name: ateng-example-demo
+    name: ${project.artifactId}
   cloud:
     nacos:
       # nacos:8848 服务地址
