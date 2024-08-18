@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="clean install ateng-modules-system" type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="ateng-modules-system-clean" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings" />
@@ -12,8 +12,6 @@
           <option name="goals">
             <list>
               <option value="clean" />
-              <option value="install" />
-              <option value="-Ptest" />
               <option value="-DskipTests" />
               <option value="-pl" />
               <option value="ateng-modules/ateng-modules-system" />

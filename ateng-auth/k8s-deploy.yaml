@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ateng-auth
+  name: ateng-cloud-auth
   namespace: ateng
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ateng-auth
+      app: ateng-cloud-auth
   template:
     metadata:
       labels:
-        app: ateng-auth
+        app: ateng-cloud-auth
     spec:
-      hostname: ateng-auth
+      hostname: ateng-cloud-auth
       terminationGracePeriodSeconds: 30
       affinity:
         podAntiAffinity:
@@ -25,8 +25,8 @@ spec:
                 topologyKey: kubernetes.io/hostname
               weight: 1
       containers:
-        - name: ateng-auth
-          image: registry.lingo.local/ateng/ateng-auth:latest
+        - name: ateng-cloud-auth
+          image: registry.lingo.local/ateng/ateng-cloud-auth:latest
           imagePullPolicy: Always
           #resources:
           #  limits:
@@ -70,14 +70,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ateng-auth
+  name: ateng-cloud-auth
   namespace: ateng
   labels:
-    app: ateng-auth
+    app: ateng-cloud-auth
 spec:
   type: ClusterIP
   selector:
-    app: ateng-auth
+    app: ateng-cloud-auth
   ports:
     - port: 20521
       targetPort: 20521

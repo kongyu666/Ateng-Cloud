@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="clean install ateng-gateway" type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="ateng-auth-install" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings" />
@@ -16,7 +16,7 @@
               <option value="-Ptest" />
               <option value="-DskipTests" />
               <option value="-pl" />
-              <option value="ateng-gateway" />
+              <option value="ateng-auth" />
               <option value="-am" />
             </list>
           </option>

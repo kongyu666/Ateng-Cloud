@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ateng-modules-system
+  name: ateng-cloud-modules-system
   namespace: ateng
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ateng-modules-system
+      app: ateng-cloud-modules-system
   template:
     metadata:
       labels:
-        app: ateng-modules-system
+        app: ateng-cloud-modules-system
     spec:
-      hostname: ateng-modules-system
+      hostname: ateng-cloud-modules-system
       terminationGracePeriodSeconds: 30
       affinity:
         podAntiAffinity:
@@ -25,8 +25,8 @@ spec:
                 topologyKey: kubernetes.io/hostname
               weight: 1
       containers:
-        - name: ateng-modules-system
-          image: registry.lingo.local/ateng/ateng-modules-system:latest
+        - name: ateng-cloud-modules-system
+          image: registry.lingo.local/ateng/ateng-cloud-modules-system:latest
           imagePullPolicy: Always
           #resources:
           #  limits:
@@ -70,14 +70,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ateng-modules-system
+  name: ateng-cloud-modules-system
   namespace: ateng
   labels:
-    app: ateng-modules-system
+    app: ateng-cloud-modules-system
 spec:
   type: ClusterIP
   selector:
-    app: ateng-modules-system
+    app: ateng-cloud-modules-system
   ports:
     - port: 20522
       targetPort: 20522

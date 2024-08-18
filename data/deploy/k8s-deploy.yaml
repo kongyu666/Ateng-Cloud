@@ -26,7 +26,7 @@ spec:
               weight: 1
       containers:
         - name: ateng-gateway
-          image: registry.lingo.local/ateng/ateng-gateway:latest
+          image: registry.lingo.local/ateng/ateng-cloud-gateway:latest
           #resources:
           #  limits:
           #    cpu: '2'
