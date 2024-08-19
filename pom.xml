@@ -85,7 +85,7 @@
         <minio.version>8.5.11</minio.version>
         <sa-token.version>1.38.0</sa-token.version>
         <poi.version>5.2.5</poi.version>
-        <easyexcel.version>4.0.1</easyexcel.version>
+        <easyexcel.version>4.0.2</easyexcel.version>
         <mapstruct-plus.version>1.4.3</mapstruct-plus.version>
         <mapstruct-plus.lombok.version>0.2.0</mapstruct-plus.lombok.version>
         <snail-job.version>1.1.1</snail-job.version>
