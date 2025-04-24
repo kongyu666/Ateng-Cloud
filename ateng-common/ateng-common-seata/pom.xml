@@ -24,39 +24,12 @@
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-core</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <!-- Apache Dubbo Seata 过滤器依赖，用于将 Seata 集成到 Dubbo 中 -->
-        <dependency>
-            <groupId>org.apache.dubbo.extensions</groupId>
-            <artifactId>dubbo-filter-seata</artifactId>
-            <version>3.2.0</version>
-            <exclusions>
-                <exclusion>
-                    <!-- 排除 Seata 核心库依赖 -->
-                    <groupId>io.seata</groupId>
-                    <artifactId>seata-core</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- Spring Cloud Alibaba Seata 启动器依赖，用于集成分布式事务管理 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-            <exclusions>
-                <exclusion>
-                    <!-- 排除所有 Log4j 依赖 -->
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-                <exclusion>
-                    <!-- 排除 Dubbo Seata 过滤器依赖，避免冲突 -->
-                    <groupId>org.apache.dubbo.extensions</groupId>
-                    <artifactId>dubbo-filter-seata</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
     </dependencies>

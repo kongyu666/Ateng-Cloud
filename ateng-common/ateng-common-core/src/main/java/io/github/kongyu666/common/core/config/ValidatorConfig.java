@@ -10,7 +10,9 @@ import org.springframework.context.annotation.Bean;
 /**
  * 校验框架配置类
  *
- * @author Lion Li
+ * @author 孔余
+ * @email 2385569970@qq.com
+ * @since 2025-01-09
  */
 @AutoConfiguration
 public class ValidatorConfig {

@@ -23,7 +23,6 @@
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-core</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!-- Forest: 声明式与编程式双修，让天下没有难以发送的 HTTP 请求 -->

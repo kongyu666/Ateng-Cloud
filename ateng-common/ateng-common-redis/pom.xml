@@ -14,7 +14,7 @@
     <!-- 项目坐标 -->
     <artifactId>ateng-common-redis</artifactId>
     <description>
-        ateng-common-redis 通用模块-Redis缓存模块，使用Fastjson2集成RedisTemplate
+        ateng-common-redis 通用模块-Redis缓存模块，使用Jackson集成RedisTemplate
     </description>
 
     <!-- 服务依赖 -->
@@ -23,21 +23,6 @@
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-core</artifactId>
-            <version>${revision}</version>
-        </dependency>
-        <!-- 高性能的JSON库 -->
-        <!-- https://github.com/alibaba/fastjson2/wiki/fastjson2_intro_cn#0-fastjson-20%E4%BB%8B%E7%BB%8D -->
-        <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2</artifactId>
-            <version>${fastjson2.version}</version>
-        </dependency>
-        <!-- 在 Spring 中集成 Fastjson2 -->
-        <!-- https://github.com/alibaba/fastjson2/blob/main/docs/spring_support_cn.md -->
-        <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2-extension-spring6</artifactId>
-            <version>${fastjson2.version}</version>
         </dependency>
 
         <!--用于redis数据库连接-->

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 项目坐标 -->
+    <groupId>io.github.kongyu666</groupId>
+    <artifactId>ateng-common-bom</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+    <description>
+        ateng-common-bom 通用模块-common依赖管理模块
+    </description>
+
+    <!-- 项目属性 -->
+    <properties>
+        <revision>1.0.0</revision>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--ateng-api RPC远程调用模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-api</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-admin 通用模块-监控模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-admin</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-aop 通用模块-AOP模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-aop</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-core 通用模块-核心模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-dubbo 通用模块-Web和RPC远程调用模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-dubbo</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-easy-excel 通用模块-Excel模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-easy-excel</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-fast-excel 通用模块-Excel模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-fast-excel</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-file 通用模块-文件模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-file</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-forest 通用模块-HTTP模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-forest</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-jetcache 通用模块-缓存模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-jetcache</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-lock4j 通用模块-分布式锁模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-lock4j</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-mail 通用模块-邮件模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-mail</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-mybatis-flex 通用模块-数据库模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-mybatis-flex</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-mybatis-plus 通用模块-数据库模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-mybatis-plus</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-nacos 通用模块-Nacos模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-nacos</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-openfeign 通用模块-RPC远程调用模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-openfeign</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-redis 通用模块-Redis缓存模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-redis</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-redisson 通用模块-Redisson缓存模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-redisson</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-satoken 通用模块-Sa-Token权限认证模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-satoken</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-seata 通用模块-分布式事务模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-seata</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-sentinel 通用模块-流控防护模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-sentinel</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-sms4j 通用模块-短信模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-sms4j</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-snail-job 通用模块-任务调度模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-snail-job</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-stomp 通用模块-STOMP模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-stomp</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-stream-kafka 通用模块-Kafka消息模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-stream-kafka</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-stream-rabbit 通用模块-RabbitMQ消息模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-stream-rabbit</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-stream-rocket 通用模块-RocketMQ消息模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-stream-rocket</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-web 通用模块-Web模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-web</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!--ateng-common-websocket 通用模块-websocket模块-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-websocket</artifactId>
+                <version>${revision}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

@@ -1,6 +1,6 @@
 package io.github.kongyu666.example.dobbo;
 
-import io.github.kongyu666.api.service.DobboTestService;
+import io.github.kongyu666.api.service.demo.RemoteDemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class DobboController {
 
     @DubboReference
-    private DobboTestService dobboTestService;
+    private RemoteDemoService remoteDemoService;
 
     @GetMapping("/hello")
     public String hello(String name) {
-        String result = dobboTestService.sayHello(name);
+        String result = remoteDemoService.hello(name);
         return result;
 //        return "";
     }

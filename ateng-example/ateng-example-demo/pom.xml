@@ -24,63 +24,54 @@
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-web</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-redis 通用模块-缓存模块-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-redis</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-mybatis-flex 通用模块-数据库模块，MyBatis-Flex: MyBatis 增强框架-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-mybatis-flex</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-forest 通用模块-HTTP模块，Forest: HTTP请求框架-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-forest</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-file 通用模块-文件模块，X File Storage: 文件存储框架-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-file</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-easy-excel 通用模块-Excel模块-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-easy-excel</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-snail-job 通用模块-任务调度模块，Snail Job: 分布式任务重试和分布式任务调度平台-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-snail-job</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-api RPC远程调用模块，使用OpenFeign完成微服务之间的通信-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-api</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-admin 通用模块-监控模块，注册到 Spring Boot Admin 服务中，从而实现应用程序的监控和管理-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-admin</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-stream-kafka 通用模块-Kafka消息模块-->
@@ -101,28 +92,18 @@
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-seata</artifactId>
-            <version>${revision}</version>
-        </dependency>
-
-        <!--ateng-common-idempotent 通用模块-幂等模块，接口防刷-->
-        <dependency>
-            <groupId>io.github.kongyu666</groupId>
-            <artifactId>ateng-common-idempotent</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-lock4j 通用模块-分布式锁模块-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-lock4j</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-sentinel 通用模块-流控防护模块-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-sentinel</artifactId>
-            <version>${revision}</version>
         </dependency>
     </dependencies>
 

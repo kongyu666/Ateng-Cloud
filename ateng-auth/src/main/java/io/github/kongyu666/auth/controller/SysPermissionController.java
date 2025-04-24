@@ -3,9 +3,7 @@ package io.github.kongyu666.auth.controller;
 import cn.dev33.satoken.annotation.SaCheckRole;
 import io.github.kongyu666.auth.entity.SysPermission;
 import io.github.kongyu666.auth.service.SysPermissionService;
-import io.github.kongyu666.common.core.enums.BusinessType;
 import io.github.kongyu666.common.core.utils.Result;
-import io.github.kongyu666.common.log.annotation.Log;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -31,7 +29,6 @@ public class SysPermissionController {
     /**
      * 新增
      */
-    @Log(module = "权限设置", desc = "权限角色", type = BusinessType.ADD)
     @PostMapping("/add")
     public Result add(@RequestBody SysPermission entity) {
         sysPermissionService.addRole(entity);

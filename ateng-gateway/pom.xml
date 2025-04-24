@@ -49,6 +49,12 @@
             <artifactId>sa-token-reactor-spring-boot3-starter</artifactId>
             <version>${sa-token.version}</version>
         </dependency>
+        <!-- Sa-Token插件：权限缓存与业务缓存分离 -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-alone-redis</artifactId>
+            <version>${sa-token.version}</version>
+        </dependency>
         <!-- Sa-Token 整合 Redis （使用 fastjson2 序列化方式） -->
         <dependency>
             <groupId>cn.dev33</groupId>
@@ -60,14 +66,18 @@
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-core</artifactId>
-            <version>${revision}</version>
         </dependency>
 
-        <!-- Spring Boot Admin 监控工具 -->
+        <!--ateng-common-admin 通用模块-监控模块-->
         <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>${spring-boot.version}</version>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-admin</artifactId>
+        </dependency>
+
+        <!--ateng-common-nacos 通用模块-Nacos模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-nacos</artifactId>
         </dependency>
 
     </dependencies>

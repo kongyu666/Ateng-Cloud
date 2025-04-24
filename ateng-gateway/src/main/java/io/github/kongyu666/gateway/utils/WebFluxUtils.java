@@ -143,7 +143,7 @@ public class WebFluxUtils {
     public static Mono<Void> webFluxResponseWriter(ServerHttpResponse response, String contentType, HttpStatus status, Object value, String code) {
         response.setStatusCode(status);
         response.getHeaders().add(HttpHeaders.CONTENT_TYPE, contentType);
-        Result result = Result.error(code, value.toString());
+        Result result = Result.failure(code, value.toString());
         DataBuffer dataBuffer = response.bufferFactory().wrap(JsonUtils.toJsonString(result).getBytes());
         return response.writeWith(Mono.just(dataBuffer));
     }

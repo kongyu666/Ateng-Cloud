@@ -1,10 +1,18 @@
 package io.github.kongyu666.gateway.filter;
 
 import cn.dev33.satoken.SaManager;
+import cn.dev33.satoken.httpauth.basic.SaHttpBasicUtil;
+import cn.dev33.satoken.reactor.filter.SaReactorFilter;
+import cn.dev33.satoken.router.SaRouter;
 import cn.dev33.satoken.same.SaSameUtil;
+import io.github.kongyu666.common.core.constant.AppCodeEnum;
+import io.github.kongyu666.common.core.utils.JsonUtils;
+import io.github.kongyu666.common.core.utils.Result;
+import io.github.kongyu666.common.core.utils.SpringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
@@ -39,6 +47,27 @@ public class ForwardAuthFilter implements GlobalFilter, Ordered {
     @Override
     public int getOrder() {
         return -100;
+    }
+
+    /**
+     * 对 actuator 健康检查接口 做账号密码鉴权
+     */
+    @Bean
+    public SaReactorFilter getSaServletFilter() {
+        String username = SpringUtils.getProperty("spring.cloud.nacos.username");
+        String password = SpringUtils.getProperty("spring.cloud.nacos.password");
+        return new SaReactorFilter()
+                .addInclude("/actuator", "/actuator/**")
+                .setAuth(obj -> {
+                    // 对 /actuator/shutdown 接口做基础鉴权
+                    SaRouter
+                            .match("/actuator/shutdown")
+                            .check(() -> SaHttpBasicUtil.check(username + ":" + password));
+                })
+                .setError(e -> {
+                    log.error(e.getMessage());
+                    return JsonUtils.toJsonString(Result.failure(AppCodeEnum.OPERATION_CANCELED.getCode(), AppCodeEnum.OPERATION_CANCELED.getDescription()).withData("需要基础认证"));
+                });
     }
 
 }

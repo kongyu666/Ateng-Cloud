@@ -1,17 +1,24 @@
 ---
-############## Sa-Token 配置 (文档: https://sa-token.cc) ##############
+# Sa-Token 配置
 sa-token:
-  # token 名称（同时也是 cookie 名称）
-  token-name: satoken
-  # token 有效期（单位：秒） 默认30天，-1 代表永久有效
-  timeout: 2592000
-  # token 最低活跃频率（单位：秒），如果 token 超过此时间没有访问系统就会被冻结，默认-1 代表不限制，永不冻结
-  active-timeout: -1
-  # 是否允许同一账号多地同时登录 （为 true 时允许一起登录, 为 false 时新登录挤掉旧登录）
-  is-concurrent: true
-  # 在多人登录同一账号时，是否共用一个 token （为 true 时所有登录共用一个 token, 为 false 时每次登录新建一个 token）
-  is-share: true
-  # token 风格（默认可取值：uuid、simple-uuid、random-32、random-64、random-128、tik）
-  token-style: uuid
-  # 是否输出操作日志
-  is-log: false
+  token-name: satoken # token 名称（同时也是 cookie 名称）
+  timeout: 86400 # token 有效期（单位：秒），默认30天，-1 代表永久有效
+  active-timeout: -1 # token 最低活跃频率（单位：秒），超时未访问会被冻结，-1代表永不冻结
+  is-concurrent: true # 是否允许同一账号多地同时登录，true 为允许，false 为新登录挤掉旧登录
+  is-share: true # 是否共用一个 token，true 为共享，false 为每次登录新建 token
+  token-style: uuid # token 风格（可选：uuid、simple-uuid、random-32、random-64、random-128、tik）
+  is-log: false # 是否输出操作日志
+  is-print: false # 是否打印logo
+  alone-redis:
+    database: 0 # Redis 数据库索引（默认为0）
+    host: 127.0.0.1 # Redis 服务器地址
+    port: 6379 # Redis 服务器连接端口
+    password:  # Redis 服务器连接密码（默认为空）
+    timeout: 10s # 连接超时时间
+    lettuce:
+      pool:
+        max-active: 100 # 连接池最大连接数（负值表示无连接数限制）
+        max-wait: -1s # 连接池最大阻塞等待时间（负值表示无限制）
+        max-idle: 100 # 连接池最大空闲连接数
+        min-idle: 0 # 连接池最小空闲连接数
+        time-between-eviction-runs: 1s # 空闲对象逐出器线程的运行间隔时间

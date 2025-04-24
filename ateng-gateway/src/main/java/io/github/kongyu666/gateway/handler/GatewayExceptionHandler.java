@@ -7,6 +7,7 @@ import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;
 import org.springframework.cloud.gateway.support.NotFoundException;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.web.reactive.resource.NoResourceFoundException;
 import org.springframework.web.server.ResponseStatusException;
@@ -25,7 +26,6 @@ public class GatewayExceptionHandler implements ErrorWebExceptionHandler {
 
     @Override
     public Mono<Void> handle(ServerWebExchange exchange, Throwable ex) {
-        ex.printStackTrace();
         ServerHttpResponse response = exchange.getResponse();
 
         if (exchange.getResponse().isCommitted()) {
@@ -49,7 +49,8 @@ public class GatewayExceptionHandler implements ErrorWebExceptionHandler {
         }
 
         log.error("[网关异常处理]请求路径:{},异常信息:{}", exchange.getRequest().getPath(), ex.getMessage());
+        ex.printStackTrace();
 
-        return WebFluxUtils.webFluxResponseWriter(response, msg, code);
+        return WebFluxUtils.webFluxResponseWriter(response, HttpStatus.INTERNAL_SERVER_ERROR, msg, code);
     }
 }

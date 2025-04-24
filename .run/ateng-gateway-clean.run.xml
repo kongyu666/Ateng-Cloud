@@ -15,7 +15,6 @@
               <option value="-DskipTests" />
               <option value="-pl" />
               <option value="ateng-gateway" />
-              <option value="-am" />
             </list>
           </option>
           <option name="multimoduleDir" />

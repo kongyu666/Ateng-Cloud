@@ -23,7 +23,6 @@
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-core</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!-- 邮件发送 -->

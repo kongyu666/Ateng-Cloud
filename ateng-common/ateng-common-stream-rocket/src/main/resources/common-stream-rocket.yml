@@ -1,0 +1,14 @@
+---
+# Spring Cloud Stream RocketMQ 配置
+spring:
+  cloud:
+    stream:
+      default:
+        binder: rocketmq-default
+        group: ateng-${spring.application.name:-0}-${spring.profiles.active:-0}
+        content-type: application/json
+      binders:
+        rocketmq-default:
+          type: rocketmq
+          environment:
+            spring.cloud.stream.rocketmq.binder.name-server: 192.168.1.13:9876

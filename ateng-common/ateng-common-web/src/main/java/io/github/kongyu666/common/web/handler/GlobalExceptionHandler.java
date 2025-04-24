@@ -29,7 +29,7 @@ import java.util.Map;
  *
  * @author 孔余
  * @email 2385569970@qq.com
- * @date 2024-08-10 09:56:48
+ * @since 2025-01-09
  */
 @RestControllerAdvice
 @Slf4j
@@ -55,7 +55,7 @@ public class GlobalExceptionHandler {
         // 设置状态码
         response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         // 构建返回结果
-        return Result.error(firstErrorMessage).setData(errors);
+        return Result.failure(firstErrorMessage).withData(errors);
     }
 
     // 处理 GET 请求参数校验失败的异常
@@ -82,7 +82,7 @@ public class GlobalExceptionHandler {
         // 设置状态码
         response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         // 构建返回结果
-        return Result.error(firstErrorMessage).setData(errors);
+        return Result.failure(firstErrorMessage).withData(errors);
     }
 
     // 处理业务的异常
@@ -98,7 +98,7 @@ public class GlobalExceptionHandler {
         ex.printStackTrace();
         response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         // 构建返回结果
-        return Result.error(code, message).setData(data);
+        return Result.failure(code, message).withData(data);
     }
 
     // 处理其他的异常
@@ -110,7 +110,7 @@ public class GlobalExceptionHandler {
         if (ex instanceof HttpRequestMethodNotSupportedException) {
             message = "请求方式错误";
         } else if (ex instanceof NoHandlerFoundException || ex instanceof NoResourceFoundException || ex instanceof HttpMessageNotReadableException) {
-            message = "资源不存在";
+            message = "资源未找到";
         } else if (ex instanceof MissingServletRequestParameterException) {
             message = "请求参数缺失";
         } else if (ex instanceof IllegalArgumentException) {
@@ -139,7 +139,7 @@ public class GlobalExceptionHandler {
         // 设置状态码
         response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         // 构建返回结果
-        return Result.error(message);
+        return Result.failure(message);
     }
 
 

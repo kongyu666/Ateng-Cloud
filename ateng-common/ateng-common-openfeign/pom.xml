@@ -23,21 +23,18 @@
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-core</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-redis 通用模块-缓存模块-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-redis</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-satoken 通用模块-Sa-Token权限认证模块-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-satoken</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!-- Spring Cloud OpenFeign 启动器依赖，用于声明式的 HTTP 客户端 -->

@@ -12,7 +12,9 @@ import reactor.core.publisher.Mono;
 /**
  * 全局缓存获取body请求数据（解决流不能重复读取问题）
  *
- * @author Lion Li
+ * @author Ateng
+ * @email 2385569970@qq.com
+ * @since 2025-03-24
  */
 @Component
 public class GlobalCacheRequestFilter implements GlobalFilter, Ordered {

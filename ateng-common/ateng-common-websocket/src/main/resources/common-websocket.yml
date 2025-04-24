@@ -1,0 +1,9 @@
+---
+# WebSocket 配置
+websocket:
+  enabled: true
+  allowed-origins:
+    - "*"
+  paths:
+    - /ws
+    - /ws/demo

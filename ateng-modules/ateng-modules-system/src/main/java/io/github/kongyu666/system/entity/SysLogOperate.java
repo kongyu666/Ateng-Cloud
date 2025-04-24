@@ -35,69 +35,84 @@ public class SysLogOperate implements Serializable {
     private Long id;
 
     /**
-     * 用户
+     * 用户名
      */
-    private String userName;
+    private String username;
 
     /**
-     * 模块
+     * 模块名
      */
     private String module;
 
     /**
-     * 访问状态
+     * 操作类型
      */
-    private String status;
+    private String operationType;
 
     /**
-     * 类型
+     * 操作说明
      */
-    private String type;
+    private String description;
 
     /**
-     * 描述
+     * 方法全路径（类名+方法名）
      */
-    private String describe;
+    private String classMethod;
 
     /**
-     * 方法
+     * 请求是否成功
      */
-    private String method;
+    private boolean success;
 
     /**
-     * 请求方式
-     */
-    private String requestMethod;
-
-    /**
-     * 请求参数
-     */
-    private String requestParam;
-
-    /**
-     * 请求URI
+     * 请求的 URL
      */
     private String url;
 
     /**
-     * 返回数据
+     * 请求方式（GET、POST、PUT、DELETE 等）
      */
-    private String jsonResult;
+    private String method;
 
     /**
-     * IP
+     * 客户端 IP 地址
      */
     private String ip;
 
     /**
-     * 消耗时间
+     * User-Agent 请求头
      */
-    private Integer costTime;
+    private String userAgent;
 
     /**
-     * 错误日志
+     * 请求参数（Query String 或表单参数）
      */
-    private String errorMsg;
+    private String params;
+
+    /**
+     * 请求头信息
+     */
+    private String headers;
+
+    /**
+     * 请求体（JSON 或表单）
+     */
+    private String body;
+
+    /**
+     * 响应数据
+     */
+    private String response;
+
+    /**
+     * 执行耗时
+     */
+    private String executionTime;
+
+    /**
+     * 异常信息（如有）
+     */
+    private String exceptionMessage;
 
     /**
      * 创建时间

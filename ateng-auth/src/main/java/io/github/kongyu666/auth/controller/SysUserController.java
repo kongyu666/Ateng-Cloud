@@ -9,11 +9,12 @@ import io.github.kongyu666.auth.bo.SysUserLoginBo;
 import io.github.kongyu666.auth.bo.SysUserPageBo;
 import io.github.kongyu666.auth.entity.SysUser;
 import io.github.kongyu666.auth.service.SysUserService;
-import io.github.kongyu666.common.core.enums.BusinessType;
+import io.github.kongyu666.common.aop.annotation.RequestLog;
+import io.github.kongyu666.common.aop.constants.Operation;
+import io.github.kongyu666.common.aop.constants.Module;
 import io.github.kongyu666.common.core.utils.Result;
 import io.github.kongyu666.common.core.validation.AddGroup;
 import io.github.kongyu666.common.core.validation.UpdateGroup;
-import io.github.kongyu666.common.log.annotation.Log;
 import io.github.kongyu666.common.satoken.model.LoginUser;
 import io.github.kongyu666.common.satoken.utils.LoginUtils;
 import jakarta.validation.constraints.Min;
@@ -64,7 +65,6 @@ public class SysUserController {
     /**
      * 新增
      */
-    @Log(module = "用户设置", desc = "新增用户", type = BusinessType.ADD)
     @SaCheckRole("admin")
     @SaCheckPermission("system.user.add")
     @PostMapping("/add")
@@ -76,6 +76,16 @@ public class SysUserController {
     /**
      * 查询所有
      */
+    @RequestLog(
+            module = Module.USER,
+            operation = Operation.READ,
+            description = "查询用户信息",
+            logParams = true,  // 记录请求参数
+            logHeaders = true,  // 记录请求头
+            logBody = false,    // 不记录请求体
+            logResponse = true,  // 记录响应
+            logExecutionTime = true  // 记录执行时长
+    )
     @SaCheckPermission(value = "system.user.get", orRole = "admin")
     @GetMapping("/list")
     public Result list() {
@@ -96,7 +106,6 @@ public class SysUserController {
     /**
      * 批量删除
      */
-    @Log(module = "用户设置", desc = "删除用户", type = BusinessType.DELETE)
     @SaCheckRole("admin")
     @SaCheckPermission("system.user.delete")
     @PostMapping("/delete-batch")
@@ -112,7 +121,6 @@ public class SysUserController {
     /**
      * 更新
      */
-    @Log(module = "用户设置", desc = "更新用户", type = BusinessType.UPDATE)
     @SaCheckRole("admin")
     @SaCheckPermission("system.user.update")
     @PostMapping("/update")

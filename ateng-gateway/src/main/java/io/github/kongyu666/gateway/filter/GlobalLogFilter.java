@@ -1,19 +1,23 @@
 package io.github.kongyu666.gateway.filter;
 
-import cn.hutool.core.map.MapUtil;
-import io.github.kongyu666.common.core.utils.JsonUtils;
+import cn.hutool.core.util.StrUtil;
 import io.github.kongyu666.gateway.config.properties.CustomGatewayProperties;
 import io.github.kongyu666.gateway.utils.WebFluxUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.cloud.gateway.support.ServerWebExchangeUtils;
 import org.springframework.core.Ordered;
+import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
+
+import java.nio.CharBuffer;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 全局日志过滤器
@@ -41,16 +45,18 @@ public class GlobalLogFilter implements GlobalFilter, Ordered {
 
         // 打印请求参数
         if (WebFluxUtils.isJsonRequest(exchange)) {
-            String jsonParam = WebFluxUtils.resolveBodyFromCacheRequest(exchange);
-            log.info("[Ateng]开始请求 => URL[{}],参数类型[json],参数:[{}]", url, jsonParam);
+            // 从缓存中读取request内的body
+            String jsonParam;
+            Object obj = exchange.getAttributes().get(ServerWebExchangeUtils.CACHED_REQUEST_BODY_ATTR);
+            DataBuffer buffer = (DataBuffer) obj;
+            try (DataBuffer.ByteBufferIterator iterator = buffer.readableByteBuffers()) {
+                CharBuffer charBuffer = StandardCharsets.UTF_8.decode(iterator.next());
+                jsonParam = charBuffer.toString();
+            }
+            log.info("[Ateng]开始请求 => URL[{}],参数类型[json],参数:[{}]", url, StrUtil.cleanBlank(jsonParam));
         } else {
             MultiValueMap<String, String> parameterMap = request.getQueryParams();
-            if (MapUtil.isNotEmpty(parameterMap)) {
-                String parameters = JsonUtils.toJsonString(parameterMap);
-                log.info("[Ateng]开始请求 => URL[{}],参数类型[param],参数:[{}]", url, parameters);
-            } else {
-                log.info("[Ateng]开始请求 => URL[{}],无参数", url);
-            }
+            log.info("[Ateng]开始请求 => URL[{}],param={}", url, parameterMap);
         }
 
         exchange.getAttributes().put(START_TIME, System.currentTimeMillis());

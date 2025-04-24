@@ -1,3 +1,5 @@
+io.github.kongyu666.common.websocket.config.ApplicationConfig
+io.github.kongyu666.common.websocket.handler.MyWebSocketHandler
+io.github.kongyu666.common.websocket.service.WebSocketService
 io.github.kongyu666.common.websocket.config.WebSocketConfig
-io.github.kongyu666.common.websocket.config.WebsocketAuthHandshakeInterceptor
-io.github.kongyu666.common.websocket.config.WebSocketService
+io.github.kongyu666.common.websocket.config.properties.WebSocketProperties

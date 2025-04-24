@@ -31,7 +31,7 @@ public class GlobalExceptionAdvice {
     public Result handlerLockFailureException(LockFailureException e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("获取锁失败了'{}',发生Lock4j异常.", requestURI, e);
-        return Result.error("-1", "业务处理中，请稍后再试");
+        return Result.failure("-1", "业务处理中，请稍后再试");
     }
 
 }

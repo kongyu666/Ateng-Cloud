@@ -24,14 +24,12 @@
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-core</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-redis 通用模块-缓存模块-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-redis</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!-- lock4j: 分布式锁组件 -->

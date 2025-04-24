@@ -67,54 +67,45 @@
         <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>3.3.2</spring-boot.version>
-        <spring-cloud-alibaba.version>2023.0.1.2</spring-cloud-alibaba.version>
-        <spring-cloud.version>2023.0.3</spring-cloud.version>
-        <maven-compiler.version>3.13.0</maven-compiler.version>
-        <postgresql.version>42.7.3</postgresql.version>
-        <mysql.version>8.0.33</mysql.version>
-        <mybatis-flex.version>1.9.5</mybatis-flex.version>
-        <druid.version>1.2.23</druid.version>
-        <hikaricp.version>5.1.0</hikaricp.version>
-        <forest.version>1.5.36</forest.version>
-        <lombok.version>1.18.32</lombok.version>
-        <fastjson2.version>2.0.52</fastjson2.version>
-        <hutool.version>5.8.29</hutool.version>
-        <graceful-response.version>4.0.1-boot3</graceful-response.version>
+        <spring-boot.version>3.3.9</spring-boot.version>
+        <spring-cloud.version>2023.0.5</spring-cloud.version>
+        <spring-cloud-alibaba.version>2023.0.3.2</spring-cloud-alibaba.version>
+        <maven-compiler.version>3.12.1</maven-compiler.version>
+        <mybatis-flex.version>1.10.9</mybatis-flex.version>
+        <mybatis-plus.version>3.5.11</mybatis-plus.version>
+        <druid.version>1.2.24</druid.version>
+        <arrow.version>18.1.0</arrow.version>
+        <forest.version>1.6.3</forest.version>
+        <lombok.version>1.18.36</lombok.version>
+        <fastjson2.version>2.0.53</fastjson2.version>
+        <hutool.version>5.8.35</hutool.version>
+        <ttl.version>2.8.1</ttl.version>
+        <commons-lang3.version>3.14.0</commons-lang3.version>
+        <spring-boot-admin.version>3.4.5</spring-boot-admin.version>
         <file-storage.version>2.2.1</file-storage.version>
-        <minio.version>8.5.11</minio.version>
-        <sa-token.version>1.38.0</sa-token.version>
-        <poi.version>5.2.5</poi.version>
-        <easyexcel.version>4.0.2</easyexcel.version>
-        <mapstruct-plus.version>1.4.3</mapstruct-plus.version>
+        <minio.version>8.5.15</minio.version>
+        <aliyun-oss.version>3.18.1</aliyun-oss.version>
+        <commons-net.version>3.9.0</commons-net.version>
+        <sa-token.version>1.40.0</sa-token.version>
+        <easyexcel.version>4.0.3</easyexcel.version>
+        <fastexcel.version>1.2.0</fastexcel.version>
+        <mapstruct-plus.version>1.4.6</mapstruct-plus.version>
         <mapstruct-plus.lombok.version>0.2.0</mapstruct-plus.lombok.version>
-        <snail-job.version>1.1.1</snail-job.version>
-        <dubbo.version>3.2.13</dubbo.version>
-        <seata.version>2.1.0</seata.version>
+        <snail-job.version>1.4.0</snail-job.version>
+        <dubbo.version>3.3.4</dubbo.version>
         <lock4j.version>2.2.7</lock4j.version>
-        <sms4j.version>3.3.1</sms4j.version>
-        <jetcache.version>2.7.6</jetcache.version>
+        <sms4j.version>3.3.4</sms4j.version>
+        <jetcache.version>2.7.7</jetcache.version>
+        <redisson.version>3.44.0</redisson.version>
     </properties>
 
     <!-- 服务依赖 -->
     <dependencies>
-
-        <!-- Nacos 服务发现的依赖 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-
-        <!-- Nacos 配置管理的依赖 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
+            <!-- SpringCloud 微服务 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -122,6 +113,15 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- SpringCloud Alibaba 微服务 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- SpringBoot 依赖配置 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -130,12 +130,45 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-bom</artifactId>
+                <version>${dubbo.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- hutool 的依赖配置-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- common 的依赖配置-->
+            <dependency>
+                <groupId>io.github.kongyu666</groupId>
+                <artifactId>ateng-common-bom</artifactId>
+                <version>${revision}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- MyBatis-Flex 依赖管理 -->
+            <dependency>
+                <groupId>com.mybatis-flex</groupId>
+                <artifactId>mybatis-flex-dependencies</artifactId>
+                <version>${mybatis-flex.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- MyBatis Plus 依赖管理 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-bom</artifactId>
+                <version>${mybatis-plus.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -176,35 +209,24 @@
                             <artifactId>lombok-mapstruct-binding</artifactId>
                             <version>${mapstruct-plus.lombok.version}</version>
                         </path>
-                        <path>
-                            <groupId>com.mybatis-flex</groupId>
-                            <artifactId>mybatis-flex-processor</artifactId>
-                            <version>${mybatis-flex.version}</version>
-                        </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
         </plugins>
+       <!-- 处理资源文件 -->
         <resources>
-            <!-- 第一个资源配置块 -->
             <resource>
-                <!-- 指定资源文件的目录为 src/main/resources -->
                 <directory>src/main/resources</directory>
-                <!-- 禁用过滤，即该目录下的资源文件不会进行变量替换操作 -->
                 <filtering>false</filtering>
             </resource>
-            <!-- 第二个资源配置块 -->
             <resource>
-                <!-- 指定资源文件的目录为 src/main/resources -->
                 <directory>src/main/resources</directory>
-                <!-- 引入所有匹配的文件进行过滤 -->
                 <includes>
                     <include>application*</include>
-                    <include>bootstrap*.yml</include>
+                    <include>bootstrap*</include>
                     <include>common*</include>
                     <include>banner*</include>
                 </includes>
-                <!-- 启用过滤，即该资源中的变量将会被过滤器中的值替换 -->
                 <filtering>true</filtering>
             </resource>
         </resources>

@@ -1,3 +1,0 @@
-io.github.kongyu666.common.log.config.AopConfig
-io.github.kongyu666.common.log.aspect.LogAspect
-io.github.kongyu666.common.log.event.LogEventListener

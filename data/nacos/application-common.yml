@@ -9,24 +9,8 @@ spring:
 spring:
   servlet:
     multipart:
-      max-file-size: 200MB
-      max-request-size: 200MB
----
-server:
-  # undertow 配置
-  undertow:
-    # HTTP post内容的最大大小。当值为-1时，默认值为大小是无限的
-    max-http-post-size: -1
-    # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
-    # 每块buffer的空间大小,越小的空间被利用越充分
-    buffer-size: 512
-    # 是否分配的直接内存
-    direct-buffers: true
-    threads:
-      # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
-      io: 8
-      # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
-      worker: 256
+      max-file-size: 10MB
+      max-request-size: 10MB
 ---
 # 日志配置
 logging.:
@@ -56,25 +40,36 @@ sa-token:
   token-style: uuid
   # 是否输出操作日志
   is-log: false
+  alone-redis:
+    database: 91 # Redis 数据库索引（默认为0）
+    host: 192.168.1.10 # Redis 服务器地址
+    port: 42784 # Redis 服务器连接端口
+    password: Admin@123 # Redis 服务器连接密码（默认为空）
+    timeout: 10s # 连接超时时间
+    lettuce:
+      pool:
+        max-active: 100 # 连接池最大连接数（负值表示无连接数限制）
+        max-wait: -1s # 连接池最大阻塞等待时间（负值表示无限制）
+        max-idle: 100 # 连接池最大空闲连接数
+        min-idle: 0 # 连接池最小空闲连接数
+        time-between-eviction-runs: 1s # 空闲对象逐出器线程的运行间隔时间
 ---
 # Mybatis Flex的配置 https://mybatis-flex.com/zh/base/configuration.html
 mybatis-flex:
   global-config:
     print-banner: false
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
 ---
-# Actuator 监控端点的配置项
+# Spring Boot Actuator 配置
 management:
-  endpoints: # 配置Actuator端点的管理
+  endpoints:
     web:
-      exposure: # 暴露端点
-        include: 'health,shutdown'  # 包含所有端点，可以根据需要更改为具体的端点列表
-        #include: '*'  # 包含所有端点，可以根据需要更改为具体的端点列表
-  endpoint: # 配置各个端点的行为
-    shutdown: # 关闭端点配置
-      enabled: true # 启用shutdown端点，允许通过POST请求关闭应用程序
-    health: # 健康检查端点配置
-      #show-details: always # 显示完整的健康信息，包括详细的检查项
-      show-details: never # 显示简短的健康信息
+      exposure:
+        include: health,metrics,info,shutdown
+  endpoint:
+    shutdown:
+      enabled: true
 ---
 # 监控配置
 spring.boot.admin.client:
@@ -91,22 +86,14 @@ spring.boot.admin.client:
 sa-token:
   # 打开 RPC 调用鉴权
   check-same-token: true
-# 内置配置 不允许修改 如需修改请在 nacos 上写相同配置覆盖
-# https://cn.dubbo.apache.org/zh-cn/overview/mannual/java-sdk/reference-manual/registry/nacos/#35-%E6%9B%B4%E5%A4%9A%E9%85%8D%E7%BD%AE
+---
+# Dubbo 配置
 dubbo:
   application:
-    # 关闭qos端口避免单机多生产者端口冲突 如需使用自行开启
-    qos-enable: false
-    logger: slf4j
-    # 元数据中心 local 本地 remote 远程 这里使用远程便于其他服务获取
-    metadataType: remote
-    # 可选值 interface、instance、all，默认是 all，即接口级地址、应用级地址都注册
-    register-mode: instance
-    service-discovery:
-      # FORCE_INTERFACE，只消费接口级地址，如无地址则报错，单订阅 2.x 地址
-      # APPLICATION_FIRST，智能决策接口级/应用级地址，双订阅
-      # FORCE_APPLICATION，只消费应用级地址，如无地址则报错，单订阅 3.x 地址
-      migration: FORCE_APPLICATION
+    name: dubbo-${spring.application.name}
+  protocol:
+    name: dubbo
+    port: -1
   # 注册中心配置
   registry:
     address: nacos://${spring.cloud.nacos.server-addr}
@@ -114,25 +101,13 @@ dubbo:
     username: ${spring.cloud.nacos.username}
     password: ${spring.cloud.nacos.password}
     parameters:
-      namespace: ${spring.cloud.nacos.discovery.group}
-  protocol:
-    # 如需使用 Triple 3.0 新协议 可查看官方文档
-    # 使用 dubbo 协议通信
-    name: dubbo
-    # dubbo 协议端口(-1表示自增端口,从20880开始)
-    port: -1
-  # 消费者相关配置
+      namespace: ${spring.cloud.nacos.discovery.namespace}
+  # 消费者配置
   consumer:
-    # 超时时间
-    timeout: 3000
-    # 结果缓存(LRU算法)
-    # 会有数据不一致问题 建议在注解局部开启
-    cache: false
-    # 支持校验注解
-    validation: jvalidationNew
-    # 调用重试 不包括第一次 0为不需要重试
-    retries: 3
-    # 初始化检查
-    check: false
+    timeout: 5000  # 请求超时，单位毫秒
+    retries: 3     # 重试次数
+    loadbalance: roundrobin # 负载均衡策略（轮询）
+    cache: false  # 关闭缓存
+    validation: jvalidationNew  # 支持校验注解
+    check: false  # 初始化检查
 ---
-

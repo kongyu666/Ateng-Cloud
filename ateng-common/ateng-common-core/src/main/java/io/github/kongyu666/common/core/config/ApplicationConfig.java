@@ -8,7 +8,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 /**
  * 程序注解配置
  *
- * @author Lion Li
+ * @author Ateng
+ * @email 2385569970@qq.com
+ * @since 2025-04-21
  */
 @EnableAsync(proxyTargetClass = true)
 @AutoConfiguration

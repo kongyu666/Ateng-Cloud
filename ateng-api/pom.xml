@@ -20,19 +20,29 @@
     <!-- 服务依赖 -->
     <dependencies>
 
-        <!--ateng-common-web 通用模块-Web模块，使用Fastjson2集成Web MVC-->
+        <!--ateng-common-core 通用模块-核心模块-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
-            <artifactId>ateng-common-web</artifactId>
-            <version>${revision}</version>
+            <artifactId>ateng-common-core</artifactId>
         </dependency>
 
-        <!--ateng-common-dobbo 通用模块-Web和RPC远程调用模块-->
+        <!--ateng-common-dubbo 通用模块-Web和RPC远程调用模块-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
-            <artifactId>ateng-common-dobbo</artifactId>
-            <version>${revision}</version>
+            <artifactId>ateng-common-dubbo</artifactId>
         </dependency>
+
+        <!--ateng-common-web 通用模块-Web模块，使用Fastjson2集成Web MVC-->
+        <!--<dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-web</artifactId>
+        </dependency>-->
+
+        <!--ateng-common-openfeign 通用模块-RPC远程调用模块-->
+        <!--<dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-openfeign</artifactId>
+        </dependency>-->
 
     </dependencies>
 </project>

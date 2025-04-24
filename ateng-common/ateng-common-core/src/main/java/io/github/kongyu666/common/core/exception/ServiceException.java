@@ -10,7 +10,8 @@ import java.io.Serial;
  * 业务异常
  *
  * @author 孔余
- * @date 2024-08-10 10:05:17
+ * @email 2385569970@qq.com
+ * @since 2025-01-09
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

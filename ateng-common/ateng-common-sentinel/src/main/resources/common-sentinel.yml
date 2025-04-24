@@ -1,7 +1,8 @@
 ---
+# Sentinel 配置
 spring:
   cloud:
     sentinel:
       transport:
-        port: 8719
-        dashboard: 192.168.1.10:32494
+        dashboard: 192.168.1.10:38858  # Sentinel 控制台地址
+        port: 38719  # 发送心跳的端口（默认 8719）

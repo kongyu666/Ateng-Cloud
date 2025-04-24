@@ -24,7 +24,6 @@
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-core</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!-- Spring Cloud Stream Kafka 启动器依赖，用于集成 Kafka 消息中间件 -->
@@ -32,12 +31,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-stream-kafka</artifactId>
         </dependency>
-
-        <!-- Spring Cloud Stream RabbitMQ 启动器依赖，用于集成 RabbitMQ 消息中间件 -->
-        <!--<dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
-        </dependency>-->
 
     </dependencies>
 

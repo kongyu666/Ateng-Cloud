@@ -21,24 +21,30 @@
     <packaging>pom</packaging>
     <!-- 项目包含的子模块 -->
     <modules>
+        <module>ateng-common-bom</module>
         <module>ateng-common-core</module>
-        <module>ateng-common-redis</module>
         <module>ateng-common-web</module>
+        <module>ateng-common-nacos</module>
+        <module>ateng-common-redis</module>
+        <module>ateng-common-redisson</module>
         <module>ateng-common-satoken</module>
         <module>ateng-common-mybatis-flex</module>
+        <module>ateng-common-mybatis-plus</module>
         <module>ateng-common-websocket</module>
+        <module>ateng-common-stomp</module>
         <module>ateng-common-forest</module>
         <module>ateng-common-file</module>
         <module>ateng-common-easy-excel</module>
+        <module>ateng-common-fast-excel</module>
         <module>ateng-common-snail-job</module>
-        <module>ateng-common-dobbo</module>
+        <module>ateng-common-dubbo</module>
         <module>ateng-common-openfeign</module>
         <module>ateng-common-admin</module>
-        <module>ateng-common-aop-log</module>
+        <module>ateng-common-aop</module>
         <module>ateng-common-stream-kafka</module>
         <module>ateng-common-stream-rabbit</module>
+        <module>ateng-common-stream-rocket</module>
         <module>ateng-common-seata</module>
-        <module>ateng-common-idempotent</module>
         <module>ateng-common-lock4j</module>
         <module>ateng-common-sentinel</module>
         <module>ateng-common-sms4j</module>

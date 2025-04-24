@@ -23,14 +23,13 @@
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-core</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!-- Spring Boot Admin 监控工具 -->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>${spring-boot.version}</version>
+            <version>${spring-boot-admin.version}</version>
         </dependency>
 
     </dependencies>

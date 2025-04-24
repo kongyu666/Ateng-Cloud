@@ -20,53 +20,52 @@
     <!-- 服务依赖 -->
     <dependencies>
 
-        <!--ateng-common-web 通用模块-Web模块，使用Fastjson2集成Web MVC-->
+        <!--ateng-common-web 通用模块-Web模块，使用Jackson集成Web MVC-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-web</artifactId>
-            <version>${revision}</version>
+        </dependency>
+
+        <!--ateng-common-nacos 通用模块-Nacos模块-->
+        <dependency>
+            <groupId>io.github.kongyu666</groupId>
+            <artifactId>ateng-common-nacos</artifactId>
         </dependency>
 
         <!--ateng-common-redis 通用模块-缓存模块-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-redis</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-satoken 通用模块-Sa-Token权限认证模块-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-satoken</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-mybatis-flex 通用模块-数据库模块，MyBatis-Flex: MyBatis 增强框架-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-mybatis-flex</artifactId>
-            <version>${revision}</version>
         </dependency>
 
         <!--ateng-common-admin 通用模块-监控模块，注册到 Spring Boot Admin 服务中，从而实现应用程序的监控和管理-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-common-admin</artifactId>
-            <version>${revision}</version>
         </dependency>
 
-        <!--ateng-common-aop-log 通用模块-日志模块，使用SpringBoot AOP进行接口日志访问记录-->
+        <!--ateng-common-aop 通用模块-AOP模块，使用SpringBoot AOP进行接口日志访问记录、接口防抖等切面功能-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
-            <artifactId>ateng-common-aop-log</artifactId>
-            <version>${revision}</version>
+            <artifactId>ateng-common-aop</artifactId>
         </dependency>
 
-        <!--ateng-api RPC远程调用模块，使用OpenFeign完成微服务之间的通信-->
+        <!--ateng-api RPC远程调用模块，使用Dobbo完成微服务之间的通信-->
         <dependency>
             <groupId>io.github.kongyu666</groupId>
             <artifactId>ateng-api</artifactId>
-            <version>${revision}</version>
         </dependency>
 
     </dependencies>
@@ -74,47 +73,6 @@
     <!-- 构建配置 -->
     <build>
         <plugins>
-            <!-- Maven 编译插件 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <compilerArgs>
-                        <arg>-parameters</arg>
-                    </compilerArgs>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${lombok.version}</version>
-                        </path>
-                        <path>
-                            <groupId>org.springframework.boot</groupId>
-                            <artifactId>spring-boot-configuration-processor</artifactId>
-                            <version>${spring-boot.version}</version>
-                        </path>
-                        <path>
-                            <groupId>io.github.linpeilie</groupId>
-                            <artifactId>mapstruct-plus-processor</artifactId>
-                            <version>${mapstruct-plus.version}</version>
-                        </path>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok-mapstruct-binding</artifactId>
-                            <version>${mapstruct-plus.lombok.version}</version>
-                        </path>
-                        <path>
-                            <groupId>com.mybatis-flex</groupId>
-                            <artifactId>mybatis-flex-processor</artifactId>
-                            <version>${mybatis-flex.version}</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

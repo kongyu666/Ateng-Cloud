@@ -1,0 +1,13 @@
+---
+# WebSocket 配置
+stomp:
+  enabled: true
+  allowed-origins:
+    - "*"
+  endpoint: /ws
+  user-destination-prefix: /user
+  application-destination-prefixes:
+    - /app
+  broker-destination-prefixes:
+    - /topic
+    - /user

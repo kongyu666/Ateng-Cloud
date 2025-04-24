@@ -5,13 +5,9 @@ FROM registry.lingo.local/service/java:debian12_temurin_openjdk-jdk-21-jre_dev
 ARG JAR_FILE=ateng-gateway-1.0.0.jar
 
 # 设置工作目录并拷贝数据
-WORKDIR /opt
+WORKDIR /opt/app
 COPY --chown=1001:1001 target/${JAR_FILE} ${JAR_FILE}
 COPY --chown=1001:1001 docker-entrypoint.sh docker-entrypoint.sh
-
-# 设置环境变量
-ENV JAVA_OPTS="-Xms128m -Xmx1024m" \
-    JAR_FILE=${JAR_FILE}
 
 # 设置暴露的端口号
 EXPOSE 20520

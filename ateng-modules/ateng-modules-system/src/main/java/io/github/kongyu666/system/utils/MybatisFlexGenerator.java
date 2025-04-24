@@ -2,14 +2,16 @@ package io.github.kongyu666.system.utils;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.mybatisflex.codegen.Generator;
-import com.mybatisflex.codegen.config.ColumnConfig;
 import com.mybatisflex.codegen.config.GlobalConfig;
+import com.mybatisflex.codegen.config.TableDefConfig;
 import com.mybatisflex.core.BaseMapper;
 import com.mybatisflex.core.service.IService;
 import com.mybatisflex.spring.service.impl.ServiceImpl;
 
 import java.io.File;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,8 +24,10 @@ import java.util.List;
  * @since 2024-02-19 10:56
  */
 public class MybatisFlexGenerator {
-    // 生成的包路径
+    // 根包名
     private static final String BasePackage = "io.github.kongyu666.system";
+    // 子包名，例如 ${BasePackage}.${ChildPackage} => ${BasePackage}.system
+    private static final String ChildPackage = "";
     // 需要生成的表
     private static final List<String> GenerateTable = Arrays.asList(
             "sys_log_operate"
@@ -33,13 +37,13 @@ public class MybatisFlexGenerator {
             "test", "demo", "spatial_ref_sys"
     );
 
-
     public static void main(String[] args) {
         //配置数据源
         DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setUrl("jdbc:postgresql://192.168.1.10:32297/lx_facility?currentSchema=public");
+        dataSource.setUrl("jdbc:postgresql://192.168.1.10:32297/ateng_cloud?currentSchema=public");
         dataSource.setUsername("postgres");
         dataSource.setPassword("Lingo@local_postgresql_5432");
+
 
         //创建配置内容，两种风格都可以。
         GlobalConfig globalConfig = createGlobalConfigUseStyle();
@@ -56,10 +60,11 @@ public class MybatisFlexGenerator {
         GlobalConfig globalConfig = new GlobalConfig();
 
         //设置代码路径和根包
+        PathEntity path = getPath();
         globalConfig.getPackageConfig()
-                .setSourceDir(getModulePath() + "/src/main/java")
-                .setBasePackage(BasePackage);
-        //.setMapperXmlPath(System.getProperty("user.dir") + "/src/main/resources/mapper");
+                .setSourceDir(path.getSourceDir())
+                .setBasePackage(path.getBasePackage())
+                .setMapperXmlPath(path.getMapperXmlPath());
 
         // 设置生成 Entity 并启用 Lombok
         globalConfig.enableEntity()
@@ -73,14 +78,14 @@ public class MybatisFlexGenerator {
         // 启用 Controller 生成
         globalConfig.enableController();
         // 启用 TableDef 生成
-        //globalConfig.enableTableDef();
+        globalConfig.enableTableDef();
         // 启用 MapperXml 生成
-        //globalConfig.enableMapperXml();
+        globalConfig.enableMapperXml();
 
         // 注释配置 JavadocConfig
         globalConfig.getJavadocConfig()
-                .setAuthor("孔余")
-                .setSince("1.0.0");
+                .setAuthor("ATeng")
+                .setSince(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDate.now()));
 
         //设置项目的JDK版本，项目的JDK为14及以上时建议设置该项，小于14则可以不设置
         globalConfig.setEntityJdkVersion(21);
@@ -122,81 +127,24 @@ public class MybatisFlexGenerator {
                 .setClassSuffix("Controller")
                 .setRestStyle(true)
                 .setOverwriteEnable(false);
+        // TableDef 生成配置 TableDefConfig
+        globalConfig.getTableDefConfig()
+                .setClassPrefix("")
+                .setClassSuffix("TableDef")
+                .setOverwriteEnable(true)
+                .setPropertiesNameStyle(TableDefConfig.NameStyle.UPPER_CASE)
+                .setInstanceSuffix("");
+        // MapperXml 生成配置 MapperXmlConfig
+        globalConfig.getMapperXmlConfig()
+                .setFilePrefix("")
+                .setFileSuffix("Mapper")
+                .setOverwriteEnable(false);
         // 返回配置
-        return globalConfig;
-    }
-
-    public static GlobalConfig createGlobalConfigUseStyle1() {
-        //创建配置内容
-        GlobalConfig globalConfig = new GlobalConfig();
-
-        //设置代码路径和根包
-        globalConfig.getPackageConfig()
-                .setSourceDir(System.getProperty("user.dir") + "\\target")
-                .setBasePackage("local.kongyu.test");
-
-        //设置表前缀和只生成哪些表
-        globalConfig.setTablePrefix("tb_");
-        globalConfig.setGenerateTable("books", "borrowings", "returns", "users");
-
-        //设置生成 entity 并启用 Lombok
-        globalConfig.setEntityGenerateEnable(true);
-        globalConfig.setEntityWithLombok(true);
-        //设置项目的JDK版本，项目的JDK为14及以上时建议设置该项，小于14则可以不设置
-        //globalConfig.setJdkVersion(17);
-
-        //设置生成 mapper
-        globalConfig.setMapperGenerateEnable(true);
-        globalConfig.setServiceGenerateEnable(true);
-        globalConfig.setControllerGenerateEnable(true);
-        globalConfig.setTableDefGenerateEnable(true);
-
-        //可以单独配置某个列
-        ColumnConfig columnConfig = new ColumnConfig();
-        columnConfig.setColumnName("tenant_id");
-        columnConfig.setLarge(true);
-        columnConfig.setVersion(true);
-        globalConfig.setColumnConfig("tb_account", columnConfig);
-
-        return globalConfig;
-    }
-
-    public static GlobalConfig createGlobalConfigUseStyle2() {
-        //创建配置内容
-        GlobalConfig globalConfig = new GlobalConfig();
-
-        //设置根包
-        globalConfig.getPackageConfig()
-                .setBasePackage("com.test");
-
-        //设置表前缀和只生成哪些表，setGenerateTable 未配置时，生成所有表
-        globalConfig.getStrategyConfig()
-                .setTablePrefix("tb_")
-                .setGenerateTable("tb_account", "tb_account_session");
-
-        //设置生成 entity 并启用 Lombok
-        globalConfig.enableEntity()
-                .setWithLombok(true)
-                .setJdkVersion(17);
-
-        //设置生成 mapper
-        globalConfig.enableMapper();
-
-        //可以单独配置某个列
-        ColumnConfig columnConfig = new ColumnConfig();
-        columnConfig.setColumnName("tenant_id");
-        columnConfig.setLarge(true);
-        columnConfig.setVersion(true);
-        globalConfig.getStrategyConfig()
-                .setColumnConfig("tb_account", columnConfig);
-
         return globalConfig;
     }
 
     /**
      * 获取当前模块的路径
-     *
-     * @return
      */
     public static String getModulePath() {
         // 获取当前类的路径
@@ -210,4 +158,46 @@ public class MybatisFlexGenerator {
         File moduleDir = new File(path).getParentFile();
         return moduleDir.getPath().replace("\\target", "");
     }
+
+    /**
+     * 获取配置需要的路径
+     */
+    public static PathEntity getPath() {
+        String sourceDir = getModulePath() + "/src/main/java";
+        String basePath = BasePackage.replaceAll("^\\.|\\.$", "");
+        String mapperPath = getModulePath() + "/src/main/resources/mapper";
+        if (!ChildPackage.isBlank()) {
+            basePath = basePath + "." + ChildPackage.replaceAll("^\\.|\\.$|^/|/$", "");
+            mapperPath = mapperPath + "/" + ChildPackage.replaceAll("^\\.|\\.$|^/|/$", "");
+        }
+        return new PathEntity(sourceDir, basePath, mapperPath);
+    }
+
+    /**
+     * 设置路径的类
+     */
+    public static class PathEntity {
+        private String sourceDir;
+        private String basePackage;
+        private String mapperXmlPath;
+
+        public PathEntity(String sourceDir, String basePackage, String mapperXmlPath) {
+            this.sourceDir = sourceDir;
+            this.basePackage = basePackage;
+            this.mapperXmlPath = mapperXmlPath;
+        }
+
+        public String getSourceDir() {
+            return sourceDir;
+        }
+
+        public String getBasePackage() {
+            return basePackage;
+        }
+
+        public String getMapperXmlPath() {
+            return mapperXmlPath;
+        }
+    }
+
 }

@@ -14,7 +14,7 @@
     <!-- 项目坐标 -->
     <artifactId>ateng-common-web</artifactId>
     <description>
-        ateng-common-web 通用模块-Web模块，使用Fastjson2集成Web MVC
+        ateng-common-web 通用模块-Web模块，使用Jackson集成Web MVC
     </description>
 
     <!-- 服务依赖 -->
@@ -31,31 +31,23 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <exclusions>
+                <!-- 排除默认的 Tomcat 容器依赖 -->
                 <exclusion>
                     <artifactId>spring-boot-starter-tomcat</artifactId>
                     <groupId>org.springframework.boot</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- Web 容器使用 undertow 性能更强 -->
+        <!-- 引入 Undertow 作为嵌入式 Web 容器，替代默认的 Tomcat -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
 
-        <!-- 高性能的JSON库 -->
-        <!-- https://github.com/alibaba/fastjson2/wiki/fastjson2_intro_cn#0-fastjson-20%E4%BB%8B%E7%BB%8D -->
+        <!-- Spring Boot Actuator 依赖 -->
         <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2</artifactId>
-            <version>${fastjson2.version}</version>
-        </dependency>
-        <!-- 在 Spring 中集成 Fastjson2 -->
-        <!-- https://github.com/alibaba/fastjson2/blob/main/docs/spring_support_cn.md -->
-        <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2-extension-spring6</artifactId>
-            <version>${fastjson2.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
     </dependencies>

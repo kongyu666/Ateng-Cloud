@@ -1,0 +1,29 @@
+---
+# Sa Token 和 Dubbo 集成
+sa-token:
+  # 打开 RPC 调用鉴权
+  check-same-token: true
+---
+# Dubbo 配置
+dubbo:
+  application:
+    name: dubbo-${spring.application.name}
+  protocol:
+    name: dubbo
+    port: -1
+  # 注册中心配置
+  registry:
+    address: nacos://${spring.cloud.nacos.server-addr}
+    group: ${spring.cloud.nacos.discovery.group}
+    username: ${spring.cloud.nacos.username}
+    password: ${spring.cloud.nacos.password}
+    parameters:
+      namespace: ${spring.cloud.nacos.discovery.namespace}
+  # 消费者配置
+  consumer:
+    timeout: 5000  # 请求超时，单位毫秒
+    retries: 3     # 重试次数
+    loadbalance: roundrobin # 负载均衡策略（轮询）
+    cache: false  # 关闭缓存
+    validation: jvalidationNew  # 支持校验注解
+    check: false  # 初始化检查

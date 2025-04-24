@@ -1,3 +1,4 @@
-io.github.kongyu666.common.web.config.MyWebMvcConfigurer
-io.github.kongyu666.common.web.config.MyUndertowConfig
+io.github.kongyu666.common.web.config.ApplicationConfig
+io.github.kongyu666.common.web.config.UndertowConfig
+io.github.kongyu666.common.web.config.CorsConfig
 io.github.kongyu666.common.web.handler.GlobalExceptionHandler

@@ -45,7 +45,7 @@ public class GlobalExceptionHandler {
         // 设置状态码
         response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         // 构建返回结果
-        return Result.error(message);
+        return Result.failure(message);
     }
 
 }
